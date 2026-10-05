@@ -1,13 +1,23 @@
 import { cn } from "@/lib/utils";
 
-const LOGO_URL = "/goldman_logo.webp";
+export function Logo({
+  className,
+  variant = "default",
+}: {
+  className?: string;
+  variant?: "default" | "footer" | "white";
+}) {
+  const isWhite = variant === "white";
+  const isFooter = variant === "footer";
 
-export function Logo({ className }: { className?: string }) {
+  const blueColor = isWhite ? "white" : "#1e3a8a";
+  const goldColor = "#d4a843";
+  const blueTextColor = isWhite ? "white" : "#1e3a8a";
+  const goldTextColor = isWhite ? "#fbbf24" : "#d4a843";
+
   return (
-    <img
-      src={LOGO_URL}
-      alt="Goldman Advisors & Investors"
-      className={cn("h-14 w-auto object-contain", className)}
-    />
+    <div>
+      <img src="/goldman-logo.png" alt="Goldman Advisors & Investors" className={cn("h-20 w-34  object-contain", isFooter && "h-14", className)} />
+    </div>
   );
 }

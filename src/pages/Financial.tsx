@@ -15,21 +15,26 @@ export default function FinancialPage() {
       body={t.pages.financial.body}
       cta={t.pages.financial.cta}
     >
-      <div className="grid gap-14 lg:grid-cols-12">
+      <div className="grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <p className="eyebrow text-muted-foreground">{t.pages.financial.sectorsEyebrow}</p>
-          <ul className="mt-4 grid gap-x-6 gap-y-2 text-sm text-muted-foreground sm:grid-cols-1">
+          <ul className="mt-6 space-y-3">
             {sectors.map((s) => (
-              <li key={s} className="border-l-2 border-gold pl-3">
-                {s}
+              <li key={s} className="flex items-center gap-3 text-sm text-muted-foreground group">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+                <span>{s}</span>
               </li>
             ))}
           </ul>
         </div>
-        <div className="grid gap-px self-start bg-border lg:col-span-7">
+        <div className="grid gap-6 lg:col-span-7">
           {t.pages.financial.practices.map((practice) => (
-            <article key={practice.title} className="bg-background p-8 md:p-10">
-              <h2 className="text-xl">{practice.title}</h2>
+            <article key={practice.title} className="group card-hover p-8 bg-white border border-border rounded-xl">
+              <h2 className="text-xl font-semibold text-foreground">{practice.title}</h2>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{practice.body}</p>
             </article>
           ))}

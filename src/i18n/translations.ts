@@ -31,7 +31,7 @@ export type PageMeta = {
 
 export type Translations = {
   navItems: NavMeta[];
-  nav: { talk: string; langLabel: string };
+  nav: { talk: string; langLabel: string; parentCompany: string };
   hero: {
     eyebrow: string;
     headline: string;
@@ -46,10 +46,17 @@ export type Translations = {
     whatTitle: string;
     whatSub: string;
     learnMore: string;
+    introTitle: string;
+    introBody: string;
     purposeEyebrow: string;
     purposeHeading: string;
     purposeBody: string;
+    valuesIntro: string;
     values: string[];
+    nowOfWorkEyebrow: string;
+    nowOfWorkHeading: string;
+    nowOfWorkBody: string;
+    nowOfWorkTakeaway: string;
     contactEyebrow: string;
     contactHeading: string;
     contactBody: string;
@@ -61,12 +68,12 @@ export type Translations = {
     contactSuccess: string;
   };
   pages: {
-    approach: PageMeta & { cards: Card[] };
+    approach: PageMeta & { cards: Card[]; executionTitle: string; execution: Card[] };
     financial: PageMeta & { sectorsEyebrow: string; sectors: string[]; practices: Card[] };
     public: PageMeta & { items: Card[] };
-    ai: PageMeta & { priorities: Card[]; matrixEyebrow: string; matrix: Card[] };
-    asset: PageMeta & { classes: string[] };
-    development: PageMeta & { pillars: Card[]; heavyEyebrow: string; heavy: Card[] };
+    ai: PageMeta & { framework: Card[]; priorities: Card[]; playbook: Card[]; matrixEyebrow: string; matrix: Card[]; focusEyebrow: string; focus: Card[] };
+    asset: PageMeta & { classesEyebrow: string; classes: string[]; clients: string[] };
+    development: PageMeta & { pillars: Card[]; heavyEyebrow: string; heavy: Card[]; takeaways: string[] };
   };
   footer: {
     about: string;
@@ -151,7 +158,7 @@ const en: Translations = {
     {
       title: "Asset Management",
       description:
-        "Investment solutions for pension funds, endowments, insurers, corporates and family offices.",
+        "Investment solutions for pension funds, endowments, corporates and family offices.",
       bullets: [
         "Equities and fixed income",
         "Real assets and alternatives",
@@ -174,11 +181,12 @@ const en: Translations = {
   nav: {
     talk: "Talk to us",
     langLabel: "Language",
+    parentCompany: "Goldman Insurance Limited",
   },
   hero: {
-    eyebrow: "Member of the Goldman Insurance Group of Companies",
-    headline: "A principal investor mentality, brought to consulting.",
-    sub: "Goldman Advisors & Investors advises with skin-in-the-game accountability — focused on value, capital efficiency, long-term asset performance and risk mitigation — because we are also principal deal, technology, development and asset investors.",
+    eyebrow: "Goldman Advisors & Investors — Member of the Goldman Group of Companies",
+    headline: "A principal investor mentality, brought to transformation consulting.",
+    sub: "Goldman Advisors and Investors brings a Principal investor Mentality to its Transformation Consulting Services, which means we bring skin-in-the-game accountability, focusing on value, capital efficiency, long-term asset performance and risk mitigation. We act as if we have skin in the game when advising versus acting as theoretical external helpers. Goldman Advisors and Investors can do this because we are also principal deal, technology, development and asset investors.",
     ctaPrimary: "Talk to us",
     ctaSecondary: "The Goldman approach",
     primaryCta: "Explore our capabilities",
@@ -186,7 +194,7 @@ const en: Translations = {
   slides: [
     {
       kicker: "Principal investor advisory",
-      tagline: "Skin-in-the-game consulting across Zambia and Africa.",
+      tagline: "Skin-in-the-game transformation consulting across Zambia and Africa.",
     },
     {
       kicker: "Financial consulting",
@@ -198,14 +206,11 @@ const en: Translations = {
       kicker: "Asset management",
       tagline: "Investment solutions for institutions, corporates and family offices.",
     },
-    {
-      kicker: "Development & EPC",
-      tagline: "Delivering infrastructure with an investor's mindset.",
-    },
+    { kicker: "Development & EPC", tagline: "Delivering infrastructure with an investor's mindset." },
   ],
   stats: [
     { title: "Principal", body: "Investor mentality" },
-    { title: "4", body: "Operating companies" },
+    { title: "7", body: "Transformation priorities" },
     { title: "7", body: "Core values" },
     { title: "Africa", body: "Zambia and beyond" },
   ],
@@ -214,10 +219,15 @@ const en: Translations = {
     whatSub:
       "Six practices built around one idea: act as a principal, and make clients the owners of their outcomes.",
     learnMore: "Learn more",
+    introTitle: "Goldman Advisors and Investors",
+    introBody:
+      "Goldman Advisors & Investors — Member of the Goldman Group of Companies. Goldman financial advisors, strategy, operations and technology consultants partner with Government, Cooperatives and Businesses large and small to transform their vision, goals, and operations to be 21st Century Sustainable, Resilient and Meaningful to their Stakeholders. Beyond superior advice, we offer tailored creative consultation that includes investments that empowers, mobilizes and educates — which, in turn, ensures sustainable outcomes.",
     purposeEyebrow: "Purpose & Values",
     purposeHeading: "Helping clients advance the public good in the communities they serve.",
     purposeBody:
-      "We partner with government, cooperatives and businesses large and small to make their vision, goals and operations 21st-century sustainable, resilient and meaningful to their stakeholders. In a changing world, ingenuity, sustainability and resourcefulness are our lens to a brighter future for Zambia and Africa's peoples.",
+      "At Goldman we believe that, in a changing world, doing meaningful work — which for us is bringing to our clients in Zambia and across Africa Ingenuity, Sustainability, and Resourcefulness — is the lens to a brighter future for Zambia and Africa's peoples.",
+    valuesIntro:
+      "Goldman's values guide us in every interaction, decision, and innovation we deliver to our clients. We are grounded in seven core values. These values guide how we engage with one another and serve our clients and communities. They drive our operations, innovation, and leadership, enabling us to create lasting impacts of community empowerment.",
     values: [
       "Excellence",
       "Trust",
@@ -225,8 +235,14 @@ const en: Translations = {
       "Inclusion and equity",
       "Collaboration",
       "Innovation",
-      "Sustainable, resilient growth",
+      "Sustainable / resilient growth",
     ],
+    nowOfWorkEyebrow: "The Now of Work",
+    nowOfWorkHeading: "Seven deliverable consulting priorities for 2026 to 2027.",
+    nowOfWorkBody:
+      "As the realities of 2026 onto 2027 continue to unfold, the narrative has become more complex where real opportunities for transformation are emerging for government and private sector entities with AI. Transformation winners, across the world, are those that can scale AI for lasting impact, embed continuous transformation into a new operating model, treat intelligence as a foundational backbone and bridge the employee-trust gap through experience-centric design. Transformation is a mindset.",
+    nowOfWorkTakeaway:
+      "The now of work is no longer about launching tools; it's about fostering a digital mindset. Organisations that embed transformation as a core operational capability powered by AI, skills and change capacity will win this half of the year and define the next.",
     contactEyebrow: "Contact",
     contactHeading: "Start with the outcome, not the mandate.",
     contactBody:
@@ -240,35 +256,42 @@ const en: Translations = {
   },
   pages: {
     approach: {
-      eyebrow: "The Goldman Advisory Approach",
+      eyebrow: "The Goldman Organization Transformation Advisory Approach",
       heading: "We act as if we have skin in the game.",
       body: "Not theoretical external helpers — an advisor whose success is tied to the enterprise value it helps create.",
       cta: "Talk to our advisors",
       cards: [
         {
-          title: "Value Creation over Deck Creation",
-          body: "Tangible top-line sustainable growth, margin expansion and risk mitigation instead of comprehensive consulting slide decks.",
+          title: "Transformative Value Creation over Deck Creation",
+          body: "Focus on tangible top-line sustainable growth, margin expansion and risk mitigation instead of comprehensive consulting slide decks.",
         },
         {
           title: "Risk-Adjusted Decision Making",
-          body: "Data-driven strategic pragmatism and 80/20 solutions over exhaustive, theoretical perfection.",
+          body: "Prioritize data driven strategic pragmatism and 80/20 solutions over exhaustive, theoretical perfection.",
         },
         {
           title: "Long-Term Alignment",
-          body: "Advisory milestones tied to enterprise value and the client's ultimate exit or cash-flow realisation, with growth-fee deal participation.",
+          body: "Tie our advisory success and milestones directly to the enterprise value and ultimate exit or cash-flow realization of the client, for which we gain a growth fee deal participation.",
+        },
+      ],
+      executionTitle: "We Deliver Excellence in Operational Execution",
+      execution: [
+        {
+          title: "Rigor in Diligence",
+          body: "Apply private equity-style operational and commercial deep-dives to diagnose core bottlenecks.",
         },
         {
-          title: "Operational Execution",
-          body: "Private equity-style commercial deep-dives to diagnose bottlenecks, with strict capital-allocation discipline on every budget and timeline.",
+          title: "Resource Accountability",
+          body: "Treat every budget and strategic timeline with strict capital-allocation discipline.",
         },
       ],
     },
     financial: {
       eyebrow: "Financial Consulting",
       heading: "Trusted advice on the matters that decide enterprise value.",
-      body: "We advise leaders of businesses and governments on their most important financial and strategic matters, with meaningful local relationships and depth of expertise across sectors and geographies.",
+      body: "We advise leaders of businesses and governments on their most important financial and strategic matters, serving as a trusted advisor whose sole mission is to ensure the best result for the clients. We are deeply established in business centers around the world, with meaningful local relationships and insight. And as the world's largest advisory-focused firm, we have exceptional depth of expertise across industry sectors and geographies.",
       cta: "Talk to our advisors",
-      sectorsEyebrow: "Transaction advisory sectors",
+      sectorsEyebrow: "Corporate, Cooperative, Royal Establishment and PPP Transaction Advisory Sectors",
       sectors: [
         "Consumer and Retail",
         "Financial Institutions",
@@ -284,123 +307,167 @@ const en: Translations = {
       practices: [
         {
           title: "M&A and Strategic Advisory",
-          body: "Independent advice to corporate, cooperative and royal establishment clients on mergers, buy-side acquisitions, sell-side divestitures, joint ventures and partnerships — often investing alongside in the ultimate M&A entity.",
+          body: "Goldman's M&A and Strategic Advisory practice partners with public and private corporate, Cooperative and Royal Establishment clients to deliver world-class independent advice on all financial, strategic and tactical elements of evaluating and executing M&A transactions, as well as formulating comprehensive strategies to grow their businesses. Capabilities encompass mergers, buy-side acquisitions, sell-side divestitures and company sale processes, joint ventures, partnerships and more. In addition to executing transactions, we frequently collaborate with clients in the investments taking a position in the ultimate M&A entity.",
         },
         {
           title: "Capital Markets Advisory",
-          body: "A hub of expertise on public and private capital markets, capital structure and ESG — growth capital raising, equity, debt and private capital advisory informed by sophisticated data analytics.",
+          body: "A hub of expertise on public and private capital markets, capital structure, topics related to public shareholders, and ESG. Goldman provides relevant, timely insights on capital raising and capital structure advisory, leveraging sophisticated data analytics and the combined expertise of our team. Our analysis informs key strategic events under evaluation, including Growth Capital Raising, Equity, Debt, and Private Capital Advisory, as well as changes to capital allocation priorities.",
         },
         {
           title: "Restructuring & Liability Management",
-          body: "Pioneering liability management with both out-of-court and in-court restructuring representation.",
+          body: "We serve clients in this practice area with a pioneering liability management service that can provide both out of court, and in court restructuring representation.",
         },
         {
           title: "Specialized Advisory Practice",
-          body: "Strategic and geopolitical risk advice for sovereigns and governments, restructuring direct and contingent liabilities while capturing growth opportunities.",
+          body: "Provides advice on strategic matters facing sovereigns and governments including advice on geopolitical risk. Our Geopolitical Advisory team brings world class experienced geopolitical minds together to provide strategic insights in an evolving geopolitical environment. We assist Government's and sovereign entities in navigating potential risks and restructuring their outstanding direct and contingent liabilities, as well as capturing opportunities to grow their economies or entities in the global context of trends, and possible collaborators and partnerships.",
         },
       ],
     },
     public: {
-      eyebrow: "Government, Royal Establishment & PPP",
+      eyebrow: "Governments and Royal Establishment Advisory",
       heading: "Funding the infrastructure communities live on.",
-      body: "Financeable structures, balance-sheet optimisation and bankable delivery for public purpose projects across Zambia and Africa.",
+      body: "Goldman financial advisors offer expert advice that helps its clients identify the best strategies to help secure the funding they need to make improvements in their communities that ensures the ongoing sustainability of what they plan, finance and operate.",
       cta: "Talk to our advisors",
       items: [
         {
-          title: "National, Provincial & Local Government",
-          body: "Strategies that secure funding for community improvements and ensure ongoing sustainability of what clients plan, finance and operate.",
-        },
-        {
           title: "Higher Education",
-          body: "Master planning and financing of student, faculty and staff housing, labs, ICT and green utility infrastructure, technology hubs and sports facilities.",
+          body: "We partner with Colleges, Universities and Training and Research Institutions to master plan and finance student, faculty and staff housing, labs, ICT and Green utility Infrastructure, technology hubs, lecture halls and classrooms, as well as sports facilities.",
         },
         {
           title: "Healthcare",
-          body: "Research, lab, general and specialised providers and health insurers — protecting financial well-being in a fast-changing sector.",
+          body: "Goldman works with healthcare research, lab and all sizes of general and specialized providers of services, as well as health insurers to maintain and enhance their financial well-being, allowing them to focus on community health in a constantly changing healthcare technology and services sector.",
         },
         {
           title: "Transportation & Logistics",
-          body: "Financing for communities and ground, air and rail transportation entities and developers building connections.",
+          body: "Our transportation and logistics finance practice helps communities, ground, air and rail transportation entities and developers to build connections.",
         },
         {
           title: "K-12 Schools",
-          body: "Helping private and government schools meet expanding demand for enabling technologies and facilities against scarce resources.",
+          body: "Goldman helps primary and secondary school clients of all sizes, both private sector and government, to meet expanding demands and expectations for acquiring new enabling technologies and facilities while balancing scarce resources.",
         },
         {
           title: "Power",
-          body: "Solar, wind, waste-to-energy, hydro, green natural gas and geothermal generation, plus trunk and micro-grid transmission, AI SCADA, billing and distribution.",
+          body: "Goldman draws upon our experience with Africa and some of the world's largest power providers to help government and private sector, as well as PPP clients, build green infrastructure including Solar, Wind, Waste to Energy, Hydro, Green Natural Gas and Geo Thermal power generation as well as related trunk and micro grid transmission infrastructure, AI SCADA, billing and distribution systems, that help to optimize rates.",
         },
         {
           title: "Environmental Utilities",
-          body: "Water, waste water, sewage treatment and waste-to-energy solutions that are financeable, meet global best practice and optimise customer rates.",
+          body: "Our global relationships with water, waste water, sewage treatment, and waste to energy systems providers enables us to provide innovative infrastructure services solutions that are financeable and meet global best practice and regulatory regimes, as well as optimize customer rates for services.",
         },
         {
-          title: "Special District & Chiefdom Management",
-          body: "Creation and management of special government and chiefdom taxing districts, local government and redevelopment agency entities.",
+          title: "Special District and Chiefdom Management",
+          body: "We provide comprehensive district and chiefdom management and consulting services creating and managing special government and chiefdom taxing districts, local government and redevelopment agency entities.",
         },
         {
-          title: "Revolving Capital Funds",
-          body: "Self-replenishing pools where repayments, interest and cost savings are recycled to finance new provincial, district and chiefdom projects.",
+          title: "Provincial, District and Chiefdom Revolving Capital Funds",
+          body: "Goldman helps to create and then advise on Revolving Capital Funds — self-replenishing pools of money where loan repayments and interest and cost savings are recycled to finance new loans for projects.",
         },
         {
-          title: "Housing, Sports & PPP Initiatives",
-          body: "Strategic planning, balance sheet optimisation, utility technology selection and bankable financial structures for public purpose projects.",
+          title: "Sports, Leisure & Cultural Facilities",
+          body: "Our working knowledge of local markets, local regulations and local political networks brings added value to every public purpose and assembly project.",
+        },
+        {
+          title: "Government, Private, Chiefdom and PPP Housing Initiatives",
+          body: "We focus on strategic planning, financial risk management, balance sheet optimization, optimal structure and utility technologies, as well as the ultimate financial structure for a bankable sustainable development.",
+        },
+        {
+          title: "Corporations, Cooperatives and PPPs",
+          body: "Our Goldman team couples its financial modeling experience with our proprietary financial modeling that provides the underpinning for feasibility studies and then the ultimate financing the entity is seeking.",
         },
       ],
     },
     ai: {
-      eyebrow: "Goldman AI & ICT",
+      eyebrow: "Goldman AI & ICT Consulting & Investing Company",
       heading: "Technology as a driver of returns, not an operating expense.",
-      body: "A dual-lens framework: as a consultant we integrate models into enterprise workflows to unlock efficiency and new revenue lines; as an investor we test for defensible moats, data ownership and compute economics — never a thin wrapper over someone else's infrastructure.",
+      body: "Goldman AI and ICT Consulting and Investing Company merges cutting-edge technology identification and deployment with disciplined human capital and funding allocation to maximize enterprise value. The Goldman AI and ICT Consulting and Investing Company transforms technology from a costly operational expense into a primary driver of financial returns and competitive advantage.",
       cta: "Talk to our advisors",
+      framework: [
+        {
+          title: "As a Consultant",
+          body: "Focus on integrating models into existing enterprise workflows to drive immediate efficiency, reduce headcount costs, or unlock new revenue lines.",
+        },
+        {
+          title: "As an Investor",
+          body: "Focus on defensive moats, data ownership, compute costs, and ensuring that a company Goldman is investing in is not building a thin wrapper over an infrastructure layer that a major tech firm could easily replace.",
+        },
+      ],
       priorities: [
         {
           title: "Data Moats",
-          body: "Prioritise businesses with exclusive, proprietary datasets — public data no longer offers a competitive edge for model training.",
+          body: "As an investor, prioritize businesses with exclusive, proprietary datasets, as public data no longer offers a competitive edge for model training.",
         },
         {
           title: "Compute Economics",
-          body: "Track token costs, inference efficiency and custom silicon options so margins are not consumed by cloud infrastructure expense.",
+          body: "Whether as a consultant or investor, track token costs, inference efficiency, and custom silicon options to prevent margins from being consumed by cloud infrastructure expenses.",
         },
         {
           title: "Architecture Integration",
-          body: "Combine generative AI with traditional predictive analytics and secure cloud infrastructure for enterprise-grade solutions.",
+          body: "Whether as a consultant or investor we combine generative AI with traditional predictive analytics and secure cloud infrastructure to create robust, enterprise-grade solutions.",
         },
         {
           title: "Regulatory Compliance",
-          body: "Strict alignment with evolving global standards on data privacy, copyright protection and AI safety legislation.",
+          body: "As an investor we audit target companies for strict alignment with evolving global standards on data privacy, copyright protections, and AI safety legislation. As a consultant, we assist companies to achieve the same strict alignment.",
         },
       ],
-      matrixEyebrow: "Delivery matrix",
+      playbook: [
+        {
+          title: "Workflow Mapping",
+          body: "Whether as an investor and as a consultant, we audit client operations to pinpoint high-cost, high-repetition tasks perfectly suited for automated LLM orchestration.",
+        },
+        {
+          title: "Vendor Selection",
+          body: "Whether as an investor and as a consultant, we evaluate the commercial trade-offs between deploying open-source models on private servers versus using proprietary, third-party APIs.",
+        },
+      ],
+      matrixEyebrow: "The Goldman Investor-Consultant Company's Delivery Matrix",
       matrix: [
         {
           title: "Value Arbitrage",
-          body: "Injecting AI into underutilised ICT infrastructure and data assets to multiply market value.",
+          body: "Identifying underutilized ICT infrastructure or data assets and injecting AI to multiply their market value.",
         },
         {
           title: "Tech-Stack Due Diligence",
-          body: "Software architecture, technical debt and data readiness assessed before capital deployment.",
+          body: "Assessing target companies' software architecture, technical debt, and data readiness before capital deployment.",
         },
         {
           title: "Scalability Engineering",
-          body: "Architectures that support 10x growth without a linear increase in operating cost.",
+          body: "Ensuring technology architectures support 10x business growth without a linear increase in operating costs.",
         },
         {
           title: "Risk Mitigation",
-          body: "Data privacy, cybersecurity vulnerability and AI model drift treated as core portfolio risks.",
+          body: "Evaluating data privacy compliance, cybersecurity vulnerabilities, and AI model drift as core portfolio risks.",
         },
         {
           title: "Training",
-          body: "Lifting every level of an organisation's ability to be innovative with agentic AI tools and platforms.",
+          body: "Lifting all levels of an organization's ability to embrace and be innovative with agentic AI tools and platforms.",
+        },
+      ],
+      focusEyebrow: "The Goldman Investor-Consultant Company's High-Impact Focus Areas",
+      focus: [
+        {
+          title: "Infrastructure Modernization",
+          body: "Moving from legacy on-premises hardware to optimized multi-cloud and edge computing architectures.",
+        },
+        {
+          title: "Enterprise AI Integration",
+          body: "Deploying proprietary Large Language Models (LLMs) and predictive analytics to automate core business workflows.",
+        },
+        {
+          title: "Data Monetization",
+          body: "Restructuring unstructured operational data into clean, compliant, and highly valuable commercial data assets.",
+        },
+        {
+          title: "Portfolio Synergies",
+          body: "Connecting tech investments across a portfolio to share infrastructure, software licenses, and engineering talent.",
         },
       ],
     },
     asset: {
       eyebrow: "Asset Management",
       heading:
-        "Investment solutions for pension funds, endowments, insurers, corporates and family offices.",
-      body: "Products across a broad spectrum of asset classes, designed for different client types. Our traditional and alternative services cover listed equity and fixed income, REITs and other real estate, as well as technology and development related investments.",
+        "Investment solutions for pension funds, endowments, corporates and family offices.",
+      body: "Goldman Advisors & Investors Asset Management Company provides investment solutions including offering products across a broad spectrum of asset classes, designed for different client types. Our traditional and alternative investment services cover listed equity and fixed income investments including REITs and other real estate, as well as technology, and development related investments.",
       cta: "Talk to our advisors",
+      classesEyebrow: "Asset classes we guide and participate in investing",
       classes: [
         "Equities",
         "Fixed Income",
@@ -409,58 +476,78 @@ const en: Translations = {
         "Multi-Assets",
         "Alternatives",
       ],
+      clients: [
+        "Pension funds",
+        "Endowments",
+        "Insurance Companies",
+        "Corporates",
+        "Family Offices",
+      ],
     },
     development: {
-      eyebrow: "Development Company",
+      eyebrow: "Goldman Advisors & Investors Development Company",
       heading: "Development, EPC and project management with an investor's mindset.",
-      body: "We team with leading global enterprises to deliver advisory services and development investments — using AI, ICT infrastructure and venture investing to transform asset classes in Zambia and across Africa.",
+      body: "Goldman Advisors & Investors Development Company is a development and consulting engineering, procurement, construction (EPC), and project management firm that teams with leading global enterprises in delivering both its advisory services and development investments to the market. From an investor consultant perspective, the company represents a fascinating study of how an industrial and development company is utilizing AI, ICT infrastructure, and venture investing to fundamentally transform asset classes in Zambia and other areas of Africa.",
       cta: "Talk to our advisors",
       pillars: [
         {
-          title: "Investor Lens",
-          body: "A venture arm targeting contech, early-stage AI and robotics — including 7D Building Information Modeling — treating technology as an investable asset class rather than a software cost.",
+          title: "The Investor Lens: Tech Venture Capital & Brick and Mortar Development",
+          body: "Brick & Mortar Ventures: a standalone venture capital firm explicitly targeting \"contech\" (construction tech), early-stage AI, and robotics companies including in Building Information Modeling 7 Dimensional Space. We treat technology as an investable asset class rather than an operational software cost. Macro Infrastructure Plays: Goldman aggressively co-invests and positions itself as a primary infrastructure developer for major global capital allocations into Zambia and other areas of Africa — including the historic Solwezi-Kolwezi Interconnector PPP Development initiative, surrounded by an integrated 500MW of Solar and 150MW of Waste to Energy generation, high speed data cable along the interconnector, located on a 2800 Hectare MFEZ development zone hosting AI factories, modern data centers, specialized grid systems, critical minerals and rare earths nanomaterials refinery, cold storage and logistics supporting Zambia to DRC trade.",
         },
         {
-          title: "Macro Infrastructure",
-          body: "Partnered on the Solwezi-Kolwezi Interconnector PPP: 500MW solar, 150MW waste-to-energy, high-speed data cable and a 2,800-hectare MFEZ hosting AI factories, data centres and a critical minerals cluster.",
+          title: "The Consultant Lens: EPC Digital Transformation",
+          body: "C-Suite Restructuring: to overhaul how projects are designed and built, Goldman delivers an EPC Transformation set of services founded on a strategy that treats technology integration such as the use of 7D BIM as a core advisory and engineering service to maximize project delivery speed, quality, sustainability, resiliency and cost optimization. AI Agent Architectures: Goldman is modernizing legacy engineering workflows by deploying Agentic AI frameworks (using tools like LangChain, Python, and ReactJS) to empower 7D BIM — using AI agents to automatically analyze massive thousands of pages of engineering manuals in minutes.",
         },
         {
-          title: "Consultant Lens",
-          body: "EPC digital transformation founded on 7D BIM and agentic AI frameworks that mine thousands of pages of engineering manuals in minutes to maximise delivery speed, quality and cost optimisation.",
+          title: "The Concrete Value Creation Playbook",
+          body: "The Body Composition Strategy: rather than using AI merely to slash headcount and shrink operations, we advise and in our own developments reuse resource savings to improve business outcomes and build entirely new, tech-enabled business models. Physical-Digital Convergence: Generative AI is highly limited without physical infrastructure. The real alpha is found at the intersection of AI models and physical assets — Goldman uses secure edge computing, high-performance data centers, and advanced grid power to deliver the evolving powerful potential of Physical-Digital Convergence.",
         },
       ],
-      heavyEyebrow: "Heavy industry, mining, utilities and grid systems",
+      heavyEyebrow: "Heavy industries including mining, metals, utilities & grid systems",
       heavy: [
         {
           title: "Unstructured Data Dissection",
-          body: "Multi-agent systems map the engineering-to-procurement value chain and pinpoint hidden breakdown causes in minutes.",
+          body: "Multi-agent systems parse mountains of historical project controls and thousands of pages of equipment maintenance manuals. The agents scan complex operations, map variables across the engineering-to-procurement value chain, and pinpoint hidden breakdown causes in minutes.",
         },
         {
-          title: "Autonomous Earthworks",
-          body: "Drone terrain surveys and live payload data dynamically alter haul routes, boosting earthmoving efficiency by up to 40%.",
+          title: "Autonomous Earthworks Optimization",
+          body: "Autonomous equipment — including excavators, dozers, and compactors — operates via localized algorithmic feedback loops. Agents combine drone terrain surveys with real-time payload data to dynamically alter haul routes, boosting overall earthmoving efficiency by up to 40%.",
         },
         {
-          title: "Continuous Asset Reasoning",
-          body: "24/7 probabilistic forecasting against infrastructure constraints, asset standards and environmental regulation.",
+          title: "Continuous Design & Asset Reasoning",
+          body: "AI agents execute 24/7 probabilistic forecasting against infrastructure constraints, asset standards, and evolving environmental regulations. Rather than waiting for quarterly reviews, schedules and cost projections are updated minute-by-minute.",
         },
         {
-          title: "Enforceable Guardrails",
-          body: "Every automated action leaves an unalterable trace; critical anomalies route an evidence pack to a human supervisor for sign-off.",
+          title: "Enforceable Security Guardrails",
+          body: "Every single automated action creates an unalterable, step-by-step trace from the initial raw input data straight to the final decision output. If an agent flags a critical maintenance anomaly, it cannot automatically alter physical asset operations; it must route an actionable evidence pack to a human supervisor for manual sign-off.",
         },
         {
-          title: "Gigawatt-Scale AI Factories",
-          body: "Modularised AI factory delivery in Zambia and across Africa using platforms such as Omniverse.",
+          title: "4th Generation Industries: Gigawatt-Scale AI Factories",
+          body: "Fourth-generation industries require the physical delivery of massive digital infrastructure. Goldman partnered directly with leaders in AI factories to modularize gigawatt-scale AI factories in Zambia and other areas of Africa using platforms such as Omniverse.",
         },
         {
-          title: "Procurement Intelligence",
-          body: "Agents balance live supplier capacity and material pricing against geopolitical risk to protect speed-to-market.",
+          title: "Procurement Intelligence Agents",
+          body: "In hyper-scale data center projects, procurement determines speed-to-market advantage. AI agents manage supply chain logistics 24/7, continuously balancing live global supplier capacity and material pricing with geopolitical risk metrics.",
         },
+        {
+          title: "Optimizing for the First Revenue Token",
+          body: "Instead of managing construction through fragmented, isolated steps, Goldman standardizes design, procurement, and commissioning into a single, cohesive framework. AI agents dynamically coordinate engineering tasks to rapidly reduce the time it takes a data center to process its very first operational workload.",
+        },
+        {
+          title: "Synthetic Safety Training",
+          body: "AI agents build dynamic, high-fidelity synthetic environments tailored to complex, real-world project specifications. Craft professionals use these virtual reality setups to practice operating cranes and handling high-tech equipment safely before stepping onto the physical job site.",
+        },
+      ],
+      takeaways: [
+        "Structure the Sandbox: We build dedicated, off-balance-sheet vehicles for tech investments, but explicitly tie deal-flow validation to an internal operating business that can immediately run live field tests.",
+        "Move Past Simple Automations: Replace linear automation workflows with role-based, multi-agent frameworks. Let LLMs dynamically select tools while using an event-driven system architecture to keep the workflow robust and maintainable.",
+        "Target the Time-to-Value Metric: Anchor every single AI deployment to a tangible, operational finish line — such as reducing heavy-equipment mobilization lag, shortening risk modeling from quarterly to minute-by-minute, or accelerating a facility's time-to-market.",
       ],
     },
   },
   footer: {
     about:
-      "A member of the Goldman Insurance Group of Companies. Principal investor mentality applied to advisory, technology and development across Zambia and Africa.",
+      "Goldman Advisors & Investors — Member of the Goldman Group of Companies. Principal investor mentality applied to transformation consulting, technology and development across Zambia and Africa.",
     expertise: "Expertise",
     company: "Company",
     stayInformed: "Stay informed",
@@ -552,7 +639,7 @@ const fr: Translations = {
     {
       title: "Gestion d'actifs",
       description:
-        "Solutions d'investissement pour fonds de pension, dotations, assureurs, entreprises et family offices.",
+        "Solutions d'investissement pour fonds de pension, dotations, entreprises et family offices.",
       bullets: [
         "Actions et titres à revenu fixe",
         "Actifs réels et alternatives",
@@ -575,11 +662,12 @@ const fr: Translations = {
   nav: {
     talk: "Discutons-en",
     langLabel: "Langue",
+    parentCompany: "Goldman Insurance Limited",
   },
   hero: {
-    eyebrow: "Membre du groupe Goldman Insurance",
-    headline: "Une mentalité d'investisseur principal, appliquée au conseil.",
-    sub: "Goldman Advisors & Investors conseille avec une responsabilité « skin-in-the-game » — axée sur la valeur, l'efficacité du capital, la performance des actifs à long terme et l'atténuation des risques — car nous sommes aussi investisseurs principal dans les opérations, la technologie, le développement et les actifs.",
+    eyebrow: "Goldman Advisors & Investors — Membre du groupe Goldman",
+    headline: "Une mentalité d'investisseur principal, appliquée au conseil en transformation.",
+    sub: "Goldman Advisors and Investors apporte une mentalité d'investisseur principal à ses services de conseil en transformation, ce qui signifie que nous assumons une responsabilité « skin-in-the-game », axée sur la valeur, l'efficacité du capital, la performance des actifs à long terme et l'atténuation des risques. Nous agissons comme si nous avions un intérêt dans le jeu, plutôt que comme des experts externes théoriques. Goldman Advisors and Investors le peut parce que nous sommes aussi investisseurs principal dans les opérations, la technologie, le développement et les actifs.",
     ctaPrimary: "Discutons-en",
     ctaSecondary: "L'approche Goldman",
     primaryCta: "Explorer nos services",
@@ -587,7 +675,7 @@ const fr: Translations = {
   slides: [
     {
       kicker: "Conseil en investissement principal",
-      tagline: "Un conseil engagé à travers la Zambie et l'Afrique.",
+      tagline: "Un conseil en transformation engagé à travers la Zambie et l'Afrique.",
     },
     {
       kicker: "Conseil financier",
@@ -612,7 +700,7 @@ const fr: Translations = {
   ],
   stats: [
     { title: "Principal", body: "Mentalité d'investisseur" },
-    { title: "4", body: "Sociétés opérationnelles" },
+    { title: "7", body: "Priorités de transformation" },
     { title: "7", body: "Valeurs fondamentales" },
     { title: "Afrique", body: "Zambie et au-delà" },
   ],
@@ -621,11 +709,15 @@ const fr: Translations = {
     whatSub:
       "Six pratiques fondées sur une même idée : agir comme un principal et faire de nos clients les propriétaires de leurs résultats.",
     learnMore: "En savoir plus",
+    introTitle: "Goldman Advisors and Investors",
+    introBody:
+      "Goldman Advisors & Investors — Membre du groupe Goldman. Nos conseillers financiers, stratèges, consultants en opérations et technologie travaillent avec les gouvernements, les coopératives et les entreprises de toutes tailles pour transformer leur vision, leurs objectifs et leurs opérations afin de les rendre durables, résilients et significatifs au 21e siècle pour leurs parties prenantes. Au-delà de conseils supérieurs, nous offrons une consultation créative sur mesure qui inclut des investissements qui autonomisent, mobilisent et éduquent — ce qui, en retour, assure des résultats durables.",
     purposeEyebrow: "Mission & Valeurs",
-    purposeHeading:
-      "Aider nos clients à faire progresser le bien public dans les communautés qu'ils servent.",
+    purposeHeading: "Aider nos clients à faire progresser le bien public dans les communautés qu'ils servent.",
     purposeBody:
-      "Nous travaillons avec les gouvernements, les coopératives et les entreprises, grandes et petites, pour rendre leur vision, leurs objectifs et leurs opérations durables, résilients et porteurs de sens pour leurs parties prenantes au 21e siècle. Dans un monde en mutation, l'ingéniosité, la durabilité et la débrouillardise sont notre prisme vers un avenir plus radieux pour la Zambie et les peuples d'Afrique.",
+      "Chez Goldman, nous croyons que, dans un monde en mutation, faire un travail significatif — qui pour nous consiste à apporter à nos clients en Zambie et dans toute l'Afrique de l'ingéniosité, de la durabilité et de la débrouillardise — est le prisme vers un avenir plus radieux pour les peuples de la Zambie et de l'Afrique.",
+    valuesIntro:
+      "Les valeurs de Goldman nous guident dans chaque interaction, décision et innovation que nous livrons à nos clients. Nous sommes ancrés dans sept valeurs fondamentales. Ces valeurs guident la manière dont nous interagissons entre nous et servons nos clients et nos communautés. Elles pilotent nos opérations, notre innovation et notre leadership, nous permettant de créer des impacts durables d'autonomisation communautaire.",
     values: [
       "Excellence",
       "Confiance",
@@ -635,6 +727,12 @@ const fr: Translations = {
       "Innovation",
       "Croissance durable et résiliente",
     ],
+    nowOfWorkEyebrow: "Le Nouvel Ordre du Travail",
+    nowOfWorkHeading: "Sept priorités de conseil livrables pour 2026-2027.",
+    nowOfWorkBody:
+      "À mesure que les réalités de 2026 vers 2027 continuent de seomansifester, le récit est devenu plus complexe, où de réelles opportunités de transformation émergent pour les entités gouvernementales et privées grâce à l'IA. Les gagnants de la transformation, dans le monde, sont ceux qui savent-deployer l'IA à un impact durable, intégrer la transformation continue dans de nouveaux modèles opérationnels, traiter l'intelligence comme une colonne vertébrale fondamentale et combler le déficit de confiance des employés par une conception centrée sur l'expérience. La transformation est un état d'esprit.",
+    nowOfWorkTakeaway:
+      "Le nouvel ordre du travail ne consiste plus à lancer des outils ; il s'agit de nourrir une mentalité numérique. Les organisations qui intègrent la transformation comme capacité opérationnelle fondamentale, alimentée par l'IA, les compétences et la capacité au changement, gagneront cette moitié de l'année et définiront la suite.",
     contactEyebrow: "Contact",
     contactHeading: "Commençons par le résultat, pas par le mandat.",
     contactBody:
@@ -648,35 +746,42 @@ const fr: Translations = {
   },
   pages: {
     approach: {
-      eyebrow: "L'approche de conseil Goldman",
+      eyebrow: "L'approche de conseil en transformation Goldman",
       heading: "Nous agissons comme si nous avions un intérêt dans le jeu.",
-      body: "Pas de simples experts externes — un conseiller dont le succès est lié à la valeur de l'entreprise qu'il aide à créer.",
+      body: "Pas de simples experts externes théoriques — un conseiller dont le succès est lié à la valeur de l'entreprise qu'il aide à créer.",
       cta: "Parler à nos conseillers",
       cards: [
         {
-          title: "Création de valeur avant création de présentations",
-          body: "Une croissance durable du chiffre d'affaires, l'expansion des marges et l'atténuation des risques, plutôt que d'épais supports de consultation.",
+          title: "Création de valeur transformatrice avant création de présentations",
+          body: "Concentrez-vous sur une croissance durable du chiffre d'affaires, l'expansion des marges et l'atténuation des risques, plutôt que sur des séries de diapositives de consultation.",
         },
         {
           title: "Prise de décision ajustée au risque",
-          body: "Un pragmatisme stratégique fondé sur les données et des solutions 80/20 plutôt qu'une perfection théorique exhaustive.",
+          body: "Priorisez un pragmatisme stratégique fondé sur les données et des solutions 80/20 plutôt qu'une perfection théorique exhaustive.",
         },
         {
           title: "Alignement à long terme",
-          body: "Des jalons de conseil liés à la valeur de l'entreprise et à la réalisation ultime de la sortie ou des flux de trésorerie du client, avec participation aux honoraires de croissance.",
+          body: "Liez notre succès et nos jalons de conseil directement à la valeur de l'entreprise et à la réalisation ultime de la sortie ou des flux de trésorerie du client, pour laquelle nous obtenons une participation aux honoraires de croissance.",
+        },
+      ],
+      executionTitle: "Nous livrons l'excellence en exécution opérationnelle",
+      execution: [
+        {
+          title: "Rigueur dans la diligence",
+          body: "Appliquez des analyses opérationnelles et commerciales approfondies de style capital-investissement pour diagnostiquer les goulots d'étranglement fondamentaux.",
         },
         {
-          title: "Exécution opérationnelle",
-          body: "Des analyses commerciales approfondies de style capital-investissement pour diagnostiquer les goulots d'étranglement, avec une discipline stricte d'allocation du capital sur chaque budget et chaque échéance.",
+          title: "Responsabilité des ressources",
+          body: "Traitez chaque budget et chaque échéance stratégique avec une discipline stricte d'allocation du capital.",
         },
       ],
     },
     financial: {
       eyebrow: "Conseil financier",
       heading: "Un conseil de confiance sur les sujets qui déterminent la valeur de l'entreprise.",
-      body: "Nous conseillons les dirigeants d'entreprises et de gouvernements sur leurs enjeux financiers et stratégiques les plus importants, avec des relations locales solides et une profonde expertise sectorielle et géographique.",
+      body: "Nous conseillons les dirigeants d'entreprises et de gouvernements sur leurs enjeux financiers et stratégiques les plus importants, en tant que conseiller de confiance dont la seule mission est d'assurer le meilleur résultat pour les clients. Nous sommes profondément établis dans les centres d'affaires du monde entier, avec des relations locales significatives et une perspicacité. Et en tant que la plus grande firme axée sur le conseil au monde, nous avons une profondeur d'expertise exceptionnelle à travers les secteurs et les géographies.",
       cta: "Parler à nos conseillers",
-      sectorsEyebrow: "Secteurs du conseil en transactions",
+      sectorsEyebrow: "Secteurs de conseil transactionnel — Corporate, Coopératives, Établissement Royal et PPP",
       sectors: [
         "Consommation et distribution",
         "Institutions financières",
@@ -692,183 +797,246 @@ const fr: Translations = {
       practices: [
         {
           title: "Fusions-acquisitions et conseil stratégique",
-          body: "Conseil indépendant aux entreprises, coopératives et établissements royaux sur les fusions, les acquisitions, les cessions, les coentreprises et les partenariats — souvent en investissant aux côtés du client dans l'entité issue de l'opération.",
+          body: "La pratique Fusions-acquisitions et conseil stratégique de Goldman s'associe aux clients corporatifs, coopératifs et de l'Établissement Royal, publics et privés, pour fournir des conseils indépendants de classe mondiale sur tous les éléments financiers, stratégiques et tactiques de l'évaluation et de l'exécution des transactions, ainsi que la formulation de stratégies globales de croissance. Nos capacités englobent les fusions, les acquisitions, les cessions et processus de vente, les coentreprises, les partenariats et plus encore.",
         },
         {
           title: "Conseil en marchés de capitaux",
-          body: "Un pôle d'expertise sur les marchés de capitaux publics et privés, la structure du capital et l'ESG — levée de capitaux de croissance, conseil en actions, en dette et en capital privé appuyé par une analyse de données sophistiquée.",
+          body: "Un pôle d'expertise sur les marchés de capitaux publics et privés, la structure du capital, les sujets liés aux actionnaires publics et l'ESG. Goldman fournit des perspectives pertinentes et rapides sur la levée de capitaux et le conseil en structure de capital, en s'appuyant sur des analyses de données sophistiquées et l'expertise combinée de notre équipe.",
         },
         {
           title: "Restructuration et gestion du passif",
-          body: "Une gestion du passif pionnière avec représentation en restructuration tant extrajudiciaire que judiciaire.",
+          body: "Nous servons les clients dans ce domaine avec un service pionnier de gestion du passif pouvant fournir une représentation en restructuration, tanto extrajudiciaire que judiciaire.",
         },
         {
           title: "Pratique de conseil spécialisée",
-          body: "Conseil en risques stratégiques et géopolitiques pour les souverains et les gouvernements, restructuration des passifs directs et conditionnels tout en saisissant les opportunités de croissance.",
+          body: "Fournit des conseils sur les questions stratégiques facing aux souverains et aux gouvernements, y compris des conseils sur le risque géopolitique. Notre équipe géopolitique réunit des esprits recycleurs de classe mondiale pour fournir des perspectives stratégiques dans un environnement géopolitique en évolution.",
         },
       ],
     },
     public: {
-      eyebrow: "Gouvernement, Établissement royal & PPP",
+      eyebrow: "Gouvernements et Établissement Royal — Conseil",
       heading: "Financer les infrastructures sur lesquelles vivent les communautés.",
-      body: "Des structures finançables, une optimisation du bilan et une exécution bancable pour les projets d'intérêt public à travers la Zambie et l'Afrique.",
+      body: "Nos conseillers financiers offrent des conseils experts qui aident nos clients à identifier les meilleures stratégies pour sécuriser le financement dont ils ont besoin afin d'améliorer leurs communautés, en garantissant la pérennité de ce qu'ils planifient, financent et exploitent.",
       cta: "Parler à nos conseillers",
       items: [
         {
-          title: "Gouvernements national, provinciaux et locaux",
-          body: "Des stratégies qui sécurisent le financement des améliorations communautaires et assurent la pérennité de ce que les clients planifient, financent et exploitent.",
-        },
-        {
           title: "Enseignement supérieur",
-          body: "Planification maîtresse et financement des logements étudiants, du corps professoral et du personnel, des laboratoires, des TIC et des infrastructures vertes, des pôles technologiques et des installations sportives.",
+          body: "Nous nous associons aux collèges, universités et institutions de formation et de recherche pour planifier et financer le logement étudiant, du corps professoral et du personnel, les laboratoires, les TIC et les infrastructures d'utilité verte, les pôles technologiques, les amphithéâtres et les salles de classe, ainsi que les installations sportives.",
         },
         {
           title: "Santé",
-          body: "Prestataires de recherche, de laboratoire, généraux et spécialisés, et assureurs santé — protection du bien-être financier dans un secteur en pleine mutation.",
+          body: "Goldman travaille avec la recherche en santé, les laboratoires et toutes les tailles de fournisseurs généralistes et spécialisés de services, ainsi qu'avec les assureurs santé, afin de maintenir et d'améliorer leur bien-être financier.",
         },
         {
           title: "Transports & Logistique",
-          body: "Financement pour les communautés et les entités de transport terrestre, aérien et ferroviaire ainsi que les promoteurs qui créent des connexions.",
+          body: "Notre pratique de financement des transports et de la logistique aide les communautés, les entités de transport terrestre, aérien et ferroviaire et les promoteurs à construire des connexions.",
         },
         {
           title: "Écoles primaires et secondaires",
-          body: "Aider les écoles privées et publiques à répondre à la demande croissante de technologies et d'installations malgré des ressources limitées.",
+          body: "Goldman aide les clients scolaires de toutes tailles, du secteur privé et du gouvernement, à répondre aux exigences croissantes d'acquisition de nouvelles technologies et installations facilitatrices tout en équilibrant des ressources rares.",
         },
         {
           title: "Énergie",
-          body: "Solaire, éolien, valorisation énergétique des déchets, hydroélectricité, gaz naturel vert et géothermie, plus transport principal et micro-réseaux, SCADA IA, facturation et distribution.",
+          body: "Goldman s'appuie sur son expérience de l'Afrique et de certains des plus grands fournisseurs d'énergie mondiaux pour aider les clients gouvernementaux, du secteur privé et PPP à construire des infrastructures vertes.",
         },
         {
           title: "Services publics environnementaux",
-          body: "Solutions d'eau, d'eaux usées, de traitement des eaux et de valorisation énergétique des déchets qui sont finançables, conformes aux meilleures pratiques mondiales et optimisent les tarifs.",
+          body: "Nos relations mondiales avec les fournisseurs de systèmes d'eau, d'eaux usées, de traitement des eaux usées et de valorisation énergétique des déchets nous permettent de fournir des solutions de services d'infrastructure novatrices.",
         },
         {
           title: "Gestion des districts spéciaux et des chefferies",
-          body: "Création et gestion de districts fiscaux spéciaux gouvernementaux et de chefferies, d'entités de gouvernement local et d'agences de redéveloppement.",
+          body: "Nous fournissons des services complets de gestion et de conseil des districts et chefferies, créant et gérant des districts fiscaux spéciaux, des entités de gouvernement local et des agences de développement.",
         },
         {
-          title: "Fonds de capital renouvelable",
-          body: "Des fonds à reconstitution automatique où les remboursements, les intérêts et les économies sont recyclés pour financer de nouveaux projets provinciaux, de district et de chefferie.",
+          title: "Fonds revolving provinciaux, de district et de chefferie",
+          body: "Goldman aide à créer puis à conseiller des fonds revolving — des réserves d'argent auto-renouvelables.",
         },
         {
-          title: "Logement, Sport et initiatives PPP",
-          body: "Planification stratégique, optimisation du bilan, sélection des technologies et structures financières bancables pour les projets d'intérêt public.",
+          title: "Installations sportives, de loisirs et culturelles",
+          body: "Notre connaissance du marché local, des réglementations locales et des réseaux politiques locaux ajoute de la valeur à chaque projet d'intérêt public et de rassemblement.",
+        },
+        {
+          title: "Initiatives de logement gouvernemental, privé, de chefferie et PPP",
+          body: "Nous nous concentrons sur la planification stratégique, la gestion du risque financier, l'optimisation du bilan, la structure optimale et les technologies d'utilité.",
+        },
+        {
+          title: "Sociétés, coopératives et PPP",
+          body: "Notre équipe Goldman associe son expérience de la modélisation financière à notre modélisation financière propriétaire qui fournit la base des études de faisabilité.",
         },
       ],
     },
     ai: {
-      eyebrow: "Goldman IA & TIC",
+      eyebrow: "Goldman AI & ICT Consulting & Investing Company",
       heading: "La technologie comme moteur de rendement, et non comme dépense d'exploitation.",
-      body: "Un cadre à double regard : comme consultant, nous intégrons les modèles dans les flux de travail des entreprises pour débloquer efficacité et nouvelles lignes de revenus ; comme investisseur, nous testons les fossés défendables, la propriété des données et l'économie du calcul — jamais un simple habillage sur l'infrastructure d'un tiers.",
+      body: "Goldman AI and ICT Consulting and Investing Company fusionne l'identification et le déploiement de technologies de pointe avec une allocation rigoureuse du capital humain et des fonds pour maximiser la valeur de l'entreprise.",
       cta: "Parler à nos conseillers",
+      framework: [
+        {
+          title: "En tant que Consultant",
+          body: "Concentrez-vous sur l'intégration des modèles dans les flux de travail existants de l'entreprise pour stimulus l'efficacité, réduire les coûts de main-d'œuvre ou débloquer de nouvelles sources de revenus.",
+        },
+        {
+          title: "En tant qu'Investisseur",
+          body: "Concentrez-vous sur les fossés défensifs, la propriété des données, les coûts de calcul et le fait de s'assurer qu'une entreprise dans laquelle Goldman investit ne construit pas une simple enveloppe au-dessus d'une couche d'infrastructure qu'une grande firme technologique pourrait facilement remplacer.",
+        },
+      ],
       priorities: [
         {
           title: "Fossés de données",
-          body: "Privilégier les entreprises aux ensembles de données exclusifs — les données publiques ne confèrent plus d'avantage concurrentiel pour l'entraînement des modèles.",
+          body: "En tant qu'investisseur, priorisez les entreprises détenant des jeux de données exclusifs et propriétaires, car les données publiques n'offrent plus d'avantage concurrentiel pour l'entraînement des modèles.",
         },
         {
           title: "Économie du calcul",
-          body: "Suivre les coûts de jetons, l'efficacité de l'inférence et les options de silicium personnalisé pour que les marges ne soient pas absorbées par les dépenses d'infrastructure cloud.",
+          body: "Que vous soyez consultant ou investisseur, suivez les coûts de jetons, l'efficacité de l'inférence et les options de silicium personnalisé pour empêcher les marges d'être consommées par les dépenses d'infrastructure cloud.",
         },
         {
           title: "Intégration architecturale",
-          body: "Combiner l'IA générative avec l'analytique prédictive traditionnelle et une infrastructure cloud sécurisée pour des solutions de niveau entreprise.",
+          body: "Que vous soyez consultant ou investisseur, nous combinons l'IA générative avec l'analytique prédictive traditionnelle et une infrastructure cloud sécurisée pour créer des solutions robustes de niveau entreprise.",
         },
         {
           title: "Conformité réglementaire",
-          body: "Alignement strict avec les normes mondiales en évolution sur la confidentialité des données, la protection des droits d'auteur et la législation sur la sécurité de l'IA.",
+          body: "En tant qu'investisseur, nous auditons les entreprises ciblées pour un alignement strict sur les normes mondiales émergentes.",
         },
       ],
-      matrixEyebrow: "Matrice d'exécution",
+      playbook: [
+        {
+          title: "Cartographie des flux de travail",
+          body: "Que vous soyez investisseur ou consultant, nous auditons les opérations des clients pour repérer les tâches coûteuses et répétitives.",
+        },
+        {
+          title: "Sélection des fournisseurs",
+          body: "Que vous soyez investisseur ou consultant, nous évaluons les compromis commerciaux.",
+        },
+      ],
+      matrixEyebrow: "Matrice d'exécution de Goldman Investor-Consultant Company",
       matrix: [
         {
           title: "Arbitrage de valeur",
-          body: "Injection de l'IA dans les infrastructures TIC et les actifs de données sous-utilisés pour multiplier la valeur de marché.",
+          body: "Identifier les infrastructures ou actifs de données sous-utilisés et injecter de l'IA pour multiplier leur valeur marchande.",
         },
         {
           title: "Due diligence de la pile technologique",
-          body: "Architecture logicielle, dette technique et maturité des données évaluées avant le déploiement de capital.",
+          body: "Évaluer l'architecture logicielle, la dette technique et la préparation des données des entreprises ciblées avant le déploiement de capitaux.",
         },
         {
           title: "Ingénierie de l'évolutivité",
-          body: "Des architectures qui soutiennent une croissance 10x sans augmentation linéaire des coûts d'exploitation.",
+          body: "S'assurer que les architectures technologiques prennent en charge une croissance commerciale 10x sans augmentation linéaire des coûts d'exploitation.",
         },
         {
           title: "Atténuation des risques",
-          body: "Confidentialité des données, cybervulnérabilités et dérive des modèles d'IA traités comme des risques de portefeuille fondamentaux.",
+          body: "Évaluer la conformité en matière de confidentialité des données, les vulnérabilités de cybersécurité et la dérive des modèles d'IA.",
         },
         {
           title: "Formation",
-          body: "Élever la capacité d'innovation de chaque niveau de l'organisation avec des outils et plateformes d'IA agentique.",
+          body: "Élever la capacité de tous les niveaux d'une organisation à adopter et à être novatrices avec les outils et plateformes d'IA agentique.",
+        },
+      ],
+      focusEyebrow: "Domaines d'impact élevé de Goldman Investor-Consultant Company",
+      focus: [
+        {
+          title: "Modernisation des infrastructures",
+          body: "Passer du matériel sur site existant à des architectures de cloud multiple et de computing optimisées.",
+        },
+        {
+          title: "Intégration de l'IA d'entreprise",
+          body: "Déployer des modèles de langage propriétaire et de l'analytique prédictive pour automatiser les flux de travail métier essentiels.",
+        },
+        {
+          title: "Monétisation des données",
+          body: "Restructurer les données opérationnelles non structurées en actifs de données commerciaux propres, conformes et de grande valeur.",
+        },
+        {
+          title: "Synergies de portefeuille",
+          body: "Connecter les investissements technologiques d'un portefeuille pour partager les infrastructures, licences logicielles et talents d'ingénierie.",
         },
       ],
     },
     asset: {
       eyebrow: "Gestion d'actifs",
-      heading:
-        "Solutions d'investissement pour fonds de pension, dotations, assureurs, entreprises et family offices.",
-      body: "Des produits sur un large spectre de classes d'actifs, conçus pour différents types de clients. Nos services traditionnels et alternatifs couvrent les actions cotées et les titres à revenu fixe, les REIT et autres actifs immobiliers, ainsi que les investissements liés à la technologie et au développement.",
+      heading: "Solutions d'investissement pour fonds de pension, dotations, entreprises et family offices.",
+      body: "Goldman Advisors & Investors Asset Management Company fournit des solutions d'investissement, y compris des produits sur un large spectre de classes d'actifs, conçus pour différents types de clients.",
       cta: "Parler à nos conseillers",
+      classesEyebrow: "Classes d'actifs dans lesquelles nous guidons et participons aux investissements",
       classes: [
         "Actions",
         "Titres à revenu fixe",
         "Actifs réels",
-        "Technologie & PI",
+        "Technologie et PI",
         "Multi-actifs",
         "Alternatives",
       ],
+      clients: [
+        "Fonds de pension",
+        "Dotations",
+        "Compagnies d'assurance",
+        "Entreprises",
+        "Family offices",
+      ],
     },
     development: {
-      eyebrow: "Société de développement",
+      eyebrow: "Goldman Advisors & Investors Development Company",
       heading: "Développement, EPC et gestion de projet avec un état d'esprit d'investisseur.",
-      body: "Nous nous associons à de grandes entreprises mondiales pour livrer des services de conseil et des investissements de développement — en utilisant l'IA, les infrastructures TIC et l'investissement à risque pour transformer les classes d'actifs en Zambie et à travers l'Afrique.",
+      body: "Goldman Advisors & Investors Development Company est une firme de développement et de conseil en ingénierie, approvisionnement, construction (EPC) et gestion de projet qui s'associe à des entreprises mondiales de premier plan.",
       cta: "Parler à nos conseillers",
       pillars: [
         {
-          title: "Optique d'investisseur",
-          body: "Un bras de capital-risque ciblant la technologie de la construction, l'IA précoce et la robotique — y compris la modélisation des informations du bâtiment 7D — traitant la technologie comme une classe d'actifs investissable plutôt que comme un coût logiciel.",
+          title: "L'optique de l'investisseur : capital-risque tech et développement physique",
+          body: "Brick & Mortar Ventures : un fonds de capital-risque autonome ciblant les entreprises de \"contech\" (technologie de la construction), l'IA à un stade précoce et la robotique.",
         },
         {
-          title: "Macro-infrastructures",
-          body: "Partenariat sur le PPP de l'interconnexion Solwezi-Kolwezi : 500 MW de solaire, 150 MW de valorisation énergétique des déchets, un câble de données à haut débit et une ZFE de 2 800 hectares accueillant des usines d'IA, des centres de données et un pôle de minéraux critiques.",
+          title: "L'optique du consultant : transformation numérique EPC",
+          body: "Restructuration de la direction générale : Goldman livre un ensemble de services de transformation EPC fondé sur une stratégie qui traite l'intégration technologique comme un service de conseil et d'ingénierie central.",
         },
         {
-          title: "Optique de consultant",
-          body: "Transformation numérique EPC fondée sur le BIM 7D et des cadres d'IA agentique qui exploitent des milliers de pages de manuels d'ingénierie en quelques minutes pour maximiser la vitesse, la qualité et l'optimisation des coûts.",
+          title: "Le cadre concret de création de valeur",
+          body: "La stratégie de composition corporelle : plutôt que d'utiliser l'IA simplement pour réduire les effectifs, nous réutilisons les économies pour améliorer les résultats et construire de nouveaux modèles économiques activés par la technologie.",
         },
       ],
-      heavyEyebrow: "Industrie lourde, mines, services publics et réseaux électriques",
+      heavyEyebrow: "Industries lourdes, y compris les mines, les métaux, les services publics et les systèmes de réseau",
       heavy: [
         {
-          title: "Analyse des données non structurées",
-          body: "Des systèmes multi-agents cartographient la chaîne de valeur de l'ingénierie à l'approvisionnement et identifient les causes cachées des pannes en quelques minutes.",
+          title: "Dissection de données non structurées",
+          body: "Des systèmes multi-agents analysent des montagnes de contrôles de projets historiques et des milliers de pages de manuels de maintenance.",
         },
         {
-          title: "Terrassements autonomes",
-          body: "Les levés terrain par drone et les données de charge en direct modifient dynamiquement les itinéraires, augmentant l'efficacité du terrassement jusqu'à 40 %.",
+          title: "Optimisation des terrassements autonomes",
+          body: "Les équipements autonomes fonctionnent via des boucles de rétroaction algorithmiques localisées.",
         },
         {
-          title: "Raisonnement continu sur les actifs",
-          body: "Prévisions probabilistes 24/7 face aux contraintes d'infrastructure, aux normes d'actifs et à la réglementation environnementale.",
+          title: "Conception continue et raisonnement sur les actifs",
+          body: "Les agents IA exécutent des prévisions probabilistes 24/7 contre les contraintes d'infrastructure.",
         },
         {
-          title: "Garde-fous exécutoires",
-          body: "Chaque action automatisée laisse une trace inaltérable ; les anomalies critiques transmettent un dossier de preuves à un superviseur humain pour approbation.",
+          title: "Garde-fous de sécurité exécutoires",
+          body: "Chaque action automatisée crée une trace inaltérable, étape par étape.",
         },
         {
-          title: "Usines d'IA à l'échelle du gigawatt",
-          body: "Livraison modulaire d'usines d'IA en Zambie et à travers l'Afrique à l'aide de plateformes telles qu'Omniverse.",
+          title: "Industries de 4e génération : usines IA à l'échelle du gigawatt",
+          body: "Les industries de 4e génération nécessitent la livraison physique d'une infrastructure numérique massive.",
         },
         {
-          title: "Intelligence d'approvisionnement",
-          body: "Des agents équilibrent la capacité des fournisseurs et les prix des matériaux face au risque géopolitique pour protéger la rapidité de mise sur le marché.",
+          title: "Agents d'intelligence d'approvisionnement",
+          body: "Dans les projets de centres de données à très grande échelle, l'approvisionnement détermine l'avantage de vitesse vers le marché.",
         },
+        {
+          title: "Optimisation du premier jeton de revenus",
+          body: "Au lieu de gérer la construction par des étapes fragmentées et isolées, Goldman standardise la conception, l'approvisionnement et la mise en service.",
+        },
+        {
+          title: "Formation synthétique à la sécurité",
+          body: "Les agents IA construisent des environnements synthétiques dynamiques et de haute fidélité.",
+        },
+      ],
+      takeaways: [
+        "Structurer le bac à sable : nous construisons des véhicules dédiés et hors bilan pour les investissements technologiques.",
+        "Aller au-delà des automatisations simples : remplacer les flux de travail d'automatisation linéaires par des frameworks multi-agents.",
+        "Cibler la métrique Time-to-Value : ancrer chaque déploiement d'IA sur une ligne d'arrivée opérationnelle tangible.",
       ],
     },
   },
   footer: {
     about:
-      "Un membre du groupe Goldman Insurance. Une mentalité d'investisseur principal appliquée au conseil, à la technologie et au développement à travers la Zambie et l'Afrique.",
+      "Goldman Advisors & Investors — Membre du groupe Goldman. Une mentalité d'investisseur principal appliquée au conseil en transformation, à la technologie et au développement à travers la Zambie et l'Afrique.",
     expertise: "Expertise",
     company: "Société",
     stayInformed: "Restez informés",
@@ -876,7 +1044,7 @@ const fr: Translations = {
       "Des perspectives occasionnelles sur les marchés, les infrastructures et la technologie. Pas de spam.",
     subscribe: "S'abonner",
     emailPlaceholder: "Adresse e-mail",
-    subscribed: "Merci de votre abonnement.",
+    subscribed: "Merci pour votre abonnement.",
     companyLinks: [
       "Accueil",
       "Approche",
